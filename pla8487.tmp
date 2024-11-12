@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfe3v2chtm3ld"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_6e07b"]
+[ext_resource type="Texture2D" uid="uid://c17h6kwb426sc" path="res://assets/personagens/Mr. Mochi/Idle (32 x 32).png" id="1_bwmun"]
+[ext_resource type="Texture2D" uid="uid://di7d2fuva2lfc" path="res://assets/personagens/Mr. Mochi/Running (32 x 32).png" id="2_j656r"]
+[ext_resource type="Texture2D" uid="uid://b8pb7p3oihs6g" path="res://assets/personagens/Mr. Mochi/Jumping (32 x 32).png" id="4_tsjpw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ma5a"]
+atlas = ExtResource("2_j656r")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r6rux"]
+atlas = ExtResource("2_j656r")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_agyh8"]
+atlas = ExtResource("2_j656r")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qux86"]
+atlas = ExtResource("2_j656r")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r44r0"]
+atlas = ExtResource("1_bwmun")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0nia"]
+atlas = ExtResource("1_bwmun")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hpass"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ma5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r6rux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_agyh8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qux86")
+}],
+"loop": true,
+"name": &"correndo",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r44r0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0nia")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_tsjpw")
+}],
+"loop": true,
+"name": &"pulando",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dha05"]
+radius = 7.0
+height = 16.0
+
+[node name="player" type="CharacterBody2D"]
+position = Vector2(0, -16)
+script = ExtResource("1_6e07b")
+metadata/_edit_group_ = true
+
+[node name="animacao" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_hpass")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="colisao" type="CollisionShape2D" parent="."]
+position = Vector2(0, 7)
+shape = SubResource("CapsuleShape2D_dha05")
+
+[node name="camera" type="Camera2D" parent="."]
+limit_left = 0

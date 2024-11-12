@@ -1,0 +1,103 @@
+[gd_scene load_steps=9 format=3 uid="uid://b61lb3kmih1mu"]
+
+[ext_resource type="Texture2D" uid="uid://dudh8d0sfmgkv" path="res://assets/itens/Mini FX, Items & UI/Common Pick-ups/Coin (16 x 16).png" id="1_3wwx6"]
+[ext_resource type="Script" path="res://control.gd" id="1_ie2lk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ygo5x"]
+atlas = ExtResource("1_3wwx6")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_teaij"]
+atlas = ExtResource("1_3wwx6")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8er4w"]
+atlas = ExtResource("1_3wwx6")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ubapf"]
+atlas = ExtResource("1_3wwx6")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_216qw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ygo5x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_teaij")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8er4w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ubapf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="FontFile" id="FontFile_7j0gy"]
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/8/0/ascent = 0.0
+cache/0/8/0/descent = 0.0
+cache/0/8/0/underline_position = 0.0
+cache/0/8/0/underline_thickness = 0.0
+cache/0/8/0/scale = 1.0
+cache/0/12/0/ascent = 0.0
+cache/0/12/0/descent = 0.0
+cache/0/12/0/underline_position = 0.0
+cache/0/12/0/underline_thickness = 0.0
+cache/0/12/0/scale = 1.0
+cache/0/14/0/ascent = 0.0
+cache/0/14/0/descent = 0.0
+cache/0/14/0/underline_position = 0.0
+cache/0/14/0/underline_thickness = 0.0
+cache/0/14/0/scale = 1.0
+
+[node name="HUD" type="CanvasLayer"]
+
+[node name="control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ie2lk")
+
+[node name="container" type="MarginContainer" parent="control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="moedas_container" type="HBoxContainer" parent="control/container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="icone_moedas" type="AnimatedSprite2D" parent="control/container/moedas_container"]
+position = Vector2(-11, 10)
+sprite_frames = SubResource("SpriteFrames_216qw")
+frame_progress = 0.282435
+
+[node name="contador_moedas" type="Label" parent="control/container/moedas_container"]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = SubResource("FontFile_7j0gy")
+theme_override_font_sizes/font_size = 14
+text = "0000"
